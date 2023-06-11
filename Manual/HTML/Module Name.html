@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <title>Long Words — Keep Talking and Nobody Explodes Module</title>
+    <link rel="stylesheet" type="text/css" href="css/font.css">
+    <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="js/ktane-utils.js"></script>
+    <style>
+        .dark table, table {
+            margin: 1em auto;
+            border: none;
+        }
+
+        .page-footer::before { content: 'Page '; }
+        .page-footer::after { content: ' of 2'; }
+    </style>
+</head>
+<body>
+    <div class="section">
+        <div class="page page-bg-01">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Long Words</span>
+            </div>
+            <div class="page-content">
+                <img src="img/Component/Module Name.svg" class="diagram">
+                <h2>On the Subject of Module Name</h2>
+                <p class="flavour-text">I bet you didn’t even know some of these words existed.</p>
+
+                <p>On the module you are presented with an 6-letter word at the top, a 5 letter changeable section of a word in the middle and a 
+                    screen at the bottom with the encrypted version of the top word.</p>
+
+                <p>The goal of this module is to figure which section of which word was used as a key 
+                    to get from the top display to the bottom display.</p>
+
+                <h3>Step 1: Word Used</h3>
+
+                <p>Firstly, we need to find out which word was used for the encryption.</p>
+                <p>Use the following rules to find out which word was used:</p>
+                <ul>
+                    <li>If there is more than 6 batteries, your word is <b>PNEUMONOULTRAMICROSCOPICSILICOVOLCANOCONIOSIS</b></li>
+                    <li>Otherwise, if there are at least 2 empty port plates, your word is <b>PSEUDOPSEUDOHYPOPARATHYROIDISM</b></li>
+                    <li>Otherwise, if there are at least 2 vowels in the serial number, your word is <b>FLOCCINAUCINIHILIPILIFICATION</b></li>
+                    <li>Otherwise, if the absolute difference between the number of lit and unlit indicators is at least 2, your word is <br><b>ANTIDISESTABLISHMENTARIANISM</b></li>
+                    <li>Otherwise, if there is a 2 in the serial number, your word is <b>HIPPOPOTOMONSTROSESQUIPPEDALIOPHOBIA</b></li>
+                    <li>Otherwise, if none of the other conditions were met, your word is <b>SUPERCALIFRAGILISTICEXPIALIDOCIOUS</b></li>
+                </ul>
+
+                <h3>Step 2: Finding the key section</h3>
+
+                <p>So now you have your keyword, a 5-letter part of this word was used to get from the top to the bottom word using a Playfair Cipher, 
+                    where the key-section is placed at the start of the Playfair Cipher. You have to figure out which part of the word was used. 
+                    This would be a tedious task, so the module has taken pity on this grueling task. 
+                    Use the following rules to generate a range of positions which the first letter of five will fall into. 
+                    (Of course, this may not narrow down the options if the start and the end of the word end up being the range.) 
+                    If the number is negative, take its absolute value. 
+                    If either number from this calculation is greater than the amount of letters in your word, 
+                    take the number modulo the amount of letters in your word, and then add 1. 
+                </p>
+
+            </div>
+            <div class="page-footer relative-footer">1</div>
+        </div>
+
+        <div class="page page-bg-02">
+            <div class="page-header">
+                <span class="page-header-doc-title">Keep Talking and Nobody Explodes Mod</span>
+                <span class="page-header-section-title">Long Words</span>
+            </div>
+            <div class="page-content">
+                <h3>Section</h3>
+                <p>More info.</p>
+            </div>
+            <div class="page-footer relative-footer">2</div>
+        </div>
+    </div>
+</body>
+</html>
