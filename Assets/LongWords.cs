@@ -7,7 +7,7 @@ using UnityEngine;
 using KModkit;
 using Rnd = UnityEngine.Random;
 
-public class Long Words : MonoBehaviour
+public class LongWords : MonoBehaviour
 {
 
     public KMBombInfo Bomb;
@@ -31,6 +31,7 @@ public class Long Words : MonoBehaviour
     private string chosenWord;
     private int[] firstLetterRanges = new int[2];
     private string wordSection;
+    private int correctLetterIndex;
 
     List<string> SixLetterWords = new List<string>()
             {
@@ -312,6 +313,7 @@ public class Long Words : MonoBehaviour
             FirstLetterIndex = possibleIndexes[Rnd.Range(0, possibleIndexes.Count())];
         }
 
+        correctLetterIndex = FirstLetterIndex;
         string extWord = chosenWord + chosenWord;
         wordSection = extWord.Substring(FirstLetterIndex, 5);
         Debug.LogFormat("[Long Words #{0}] The module chose the first letter position of {1} which means the correct 5 letter word section is {2}.", ModuleId, FirstLetterIndex+1, wordSection);
@@ -332,16 +334,50 @@ public class Long Words : MonoBehaviour
 
 
 #pragma warning disable 414
-    private readonly string TwitchHelpMessage = @"Use !{0} to do something.";
+    private readonly string TwitchHelpMessage = @"Use !{0} U/R/D/L to press that directional button. Commands can be chained e.g. !{0} DDRRL. Use !{0} submit to press the middle display.";
 #pragma warning restore 414
 
     IEnumerator ProcessTwitchCommand(string Command)
     {
+        Command = Command.Trim().ToUpper();
         yield return null;
+        if (Command == "SUBMIT")
+        {
+            SubmitButton.OnInteract();
+        }
+        else
+        {
+            for (int i = 0; i < Command.Length; i++)
+            {
+                if (!"URDL".Contains(Command[i]))
+                {
+                    yield return "sendtochaterror Invalid command!";
+                    yield break;
+                }
+            }
+            for (int i = 0; i < Command.Length; i++)
+            {
+                char[] directionArray = { 'U', 'D', 'L', 'R' };
+                DirectionButtons[Array.IndexOf(directionArray, Command[i])].OnInteract();
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
     }
 
     IEnumerator TwitchHandleForcedSolve()
     {
-        yield return null;
+        int correctWordIndex = Array.IndexOf(possibleWords, chosenWord);
+        while (currentWordIndex != correctWordIndex) 
+        { 
+            DirectionButtons[1].OnInteract();
+            yield return new WaitForSeconds(.1f);
+        }
+        while (currentLetterIndex != correctLetterIndex)
+        {
+            DirectionButtons[3].OnInteract();
+            yield return new WaitForSeconds(.1f);
+        }
+        SubmitButton.OnInteract();
     }
 }
