@@ -34,4 +34,14 @@ public static class Helper {
             Debug.Log(line);
         }
     }
+
+    public static List<char> ListReplace(List<char> list, char target, char replacer)
+    {
+        for (int i = 0; i < list.Count; i++)
+            if (list[i] == target)
+                list[i] = replacer;
+        return list;
+        
+
+    }
 }

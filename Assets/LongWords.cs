@@ -213,7 +213,6 @@ public class LongWords : MonoBehaviour
 
     string EncryptPlayfair(string keySection, string encrypted)
     {
-        keySection = keySection.Replace("J", "I");
         List<char> uniqueChars = new List<char>();
         foreach (char letter in keySection)
         {
@@ -223,8 +222,7 @@ public class LongWords : MonoBehaviour
         List<char> key = Helper.AppendPlayfairAlphabet(uniqueChars);
 
         List<char> encryptedList = encrypted.ToList();
-        if (encryptedList.Count % 2 == 1)
-            encryptedList.Add('X');
+        encryptedList = Helper.ListReplace(encryptedList, 'J', 'I');
         for (int pair = 0; pair < encryptedList.Count; pair += 2)
         {
             if (encryptedList[pair] == encryptedList[pair + 1])
@@ -232,7 +230,6 @@ public class LongWords : MonoBehaviour
         }
 
         string EncryptedMessage = "";
-
 
         for (int pair = 0; pair < encryptedList.Count(); pair += 2)
         {
@@ -301,7 +298,7 @@ public class LongWords : MonoBehaviour
     void DetermineWordSection()
     {
         int FirstLetterIndex;
-        if (firstLetterRanges[1] > firstLetterRanges[0])
+        if (firstLetterRanges[1] >= firstLetterRanges[0])
             FirstLetterIndex = Rnd.Range(firstLetterRanges[0] - 1, firstLetterRanges[1]);
         else
         {

@@ -214,21 +214,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114039375625718104, guid: c01c981dfca723141a5820cc3c5ac0cc,
-        type: 2}
-      propertyPath: ModuleType
-      value: LongWords
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039375625718104, guid: c01c981dfca723141a5820cc3c5ac0cc,
-        type: 2}
-      propertyPath: ModuleDisplayName
-      value: Long Words
-      objectReference: {fileID: 0}
-    - target: {fileID: 114039375625718104, guid: c01c981dfca723141a5820cc3c5ac0cc,
-        type: 2}
-      propertyPath: RequiresTimerVisibility
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c01c981dfca723141a5820cc3c5ac0cc, type: 2}
   m_IsPrefabParent: 0
