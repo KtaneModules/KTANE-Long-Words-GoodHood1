@@ -64,6 +64,8 @@ public class LongWords : MonoBehaviour
     private string chosenSixLetterWord;
     private string encryptedWord;
 
+    private string[] solvedWords = { "YAY :)", ":)", "Correct", "Solved", "Cool", "Good Job" };
+
     private bool isAnimating = false;
 
     void Awake()
@@ -165,6 +167,7 @@ public class LongWords : MonoBehaviour
             text.color = Color.green;
         }
         Module.HandlePass();
+        displayTexts[1].text = solvedWords[Rnd.Range(0, solvedWords.Length)];
         Audio.PlaySoundAtTransform("SolveSound", transform);
     }
 

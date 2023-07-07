@@ -2402,7 +2402,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1865025963366070}
-  m_Text: HELLO
+  m_Text: Good Job
   m_OffsetZ: 0
   m_CharacterSize: 0.055
   m_LineSpacing: 1
